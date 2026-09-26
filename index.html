@@ -1,0 +1,365 @@
+DOCTYPE html>
+ !<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>A Surprise For Jaanu ❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #ff8fab, #ffc2d1, #ffe5ec);
+      color: #651531;
+    }
+
+    .page {
+      display: none;
+      min-height: 100vh;
+      padding: 25px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .page.active {
+      display: flex;
+    }
+
+    .card {
+      width: min(720px, 100%);
+      padding: 40px 28px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 18px 45px rgba(104, 21, 49, 0.28);
+      backdrop-filter: blur(10px);
+      animation: appear 0.7s ease;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.96);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    h1 {
+      margin-bottom: 18px;
+      color: #c9184a;
+      font-size: clamp(2rem, 6vw, 3.8rem);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #c9184a;
+      font-size: clamp(1.5rem, 4vw, 2.3rem);
+    }
+
+    p {
+      margin: 14px 0;
+      font-size: clamp(1rem, 2.5vw, 1.18rem);
+      line-height: 1.75;
+    }
+
+    .small-text {
+      font-size: 0.95rem;
+      opacity: 0.75;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 14px 25px;
+      border: none;
+      border-radius: 999px;
+      background: #e63967;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(201, 24, 74, 0.3);
+      transition: 0.25s ease;
+    }
+
+    button:hover {
+      background: #c9184a;
+      transform: translateY(-3px) scale(1.04);
+    }
+
+    .envelope {
+      position: relative;
+      width: min(330px, 85vw);
+      height: 215px;
+      margin: 30px auto 15px;
+      border-radius: 10px;
+      background: #ff4d7d;
+      box-shadow: 0 14px 28px rgba(104, 21, 49, 0.3);
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .envelope:hover {
+      transform: scale(1.05) rotate(-1deg);
+    }
+
+    .envelope::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-left: 165px solid transparent;
+      border-right: 165px solid transparent;
+      border-top: 112px solid #ff85a2;
+      transform-origin: top;
+    }
+
+    .mail-icon {
+      position: absolute;
+      top: 78px;
+      left: 50%;
+      z-index: 2;
+      transform: translateX(-50%);
+      font-size: 4.6rem;
+      animation: heartbeat 1.3s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: translateX(-50%) scale(1);
+      }
+
+      50% {
+        transform: translateX(-50%) scale(1.17);
+      }
+    }
+
+    .reasons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .reason-card {
+      padding: 19px 15px;
+      border-radius: 18px;
+      background: #fff0f4;
+      box-shadow: 0 5px 12px rgba(201, 24, 74, 0.11);
+      font-size: 1rem;
+      line-height: 1.5;
+      transition: 0.25s ease;
+    }
+
+    .reason-card:hover {
+      transform: translateY(-5px);
+      background: #ffdce6;
+    }
+
+    .big-heart {
+      margin-bottom: 15px;
+      font-size: 6rem;
+      animation: floating 2.2s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-17px);
+      }
+    }
+
+    .signature {
+      margin-top: 25px;
+      color: #c9184a;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .floating-heart {
+      position: fixed;
+      bottom: -50px;
+      z-index: 100;
+      pointer-events: none;
+      animation: flyUp linear forwards;
+    }
+
+    @keyframes flyUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .music-note {
+      font-size: 1.5rem;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- PAGE 1 -->
+  <section class="page active" id="page1">
+    <div class="card">
+      <h1>Hey, Jaanu ❤️</h1>
+
+      <p>Vedant made something small, but special, only for you.</p>
+
+      <div class="envelope" onclick="openLetter()" title="Click to open">
+        <div class="mail-icon">💌</div>
+      </div>
+
+      <p class="small-text">Click the envelope to open your surprise</p>
+    </div>
+  </section>
+
+  <!-- PAGE 2 -->
+  <section class="page" id="page2">
+    <div class="card">
+      <h1>For Jaanu ❤️</h1>
+
+      <p>
+        I wanted to take a moment to remind you how special you are to me.
+        You make my days brighter, my smile bigger, and my life better simply
+        by being in it.
+      </p>
+
+      <p>
+        This may be a small website, but every word here comes directly
+        from my heart.
+      </p>
+
+      <button onclick="showReasons()">Click for more ✨</button>
+    </div>
+  </section>
+
+  <!-- PAGE 3 -->
+  <section class="page" id="page3">
+    <div class="card">
+      <h2>Some Reasons I Love You, Jaanu ❤️</h2>
+
+      <div class="reasons">
+        <div class="reason-card">😊 Jaanu tu bs apni overthinking baata diya kr baki sb mai handle kr luga .</div>
+
+        <div class="reason-card">💖 I promise you jaanu that i,ll do my best to make you happy.</div>
+
+        <div class="reason-card">🌸 You are the person where i find my comfort i loveeee youu reeeee smmmm.</div>
+
+        <div class="reason-card">😂pta nai kb ragebait kr deta huuu but tujse daar utna hi lgtaa hai jaanuu.</div>
+
+        <div class="reason-card">✨ You inspire me to become a better version of myself thanxx for comingg in my lifeee .</div>
+
+        <div class="reason-card">🤍 You are not just important to me — you are my favorite person jaaaannuuuuu.</div>
+      </div>
+
+      <button onclick="showFinal()">One final message 💌</button>
+    </div>
+  </section>
+
+  <!-- PAGE 4 -->
+  <section class="page" id="page4">
+    <div class="card">
+      <div class="big-heart">❤️</div>
+
+      <h1>I Love You, Jaanuuu</h1>
+
+      <p>
+        Thank you for being part of my life. Thank you for my every smile,
+        every conversation, every memory, and kch bhi ho we,ll fight n stay together and ik gyan jyada deta hu but humare liye hi
+        i,ll handle your overthinking n you tooo...!!
+      </p>
+
+      <p>
+        No matter what happens, I want you to remember one thing:
+        you are loved more than you know.
+      </p>
+
+      <p class="ved">
+        With all my love,<br>
+        Vedant ❤️
+      </p>
+
+      <div class="music-note">🎵 You are my favorite notification. 🎵</div>
+
+      <button onclick="restart()">Read it again 🔁</button>
+    </div>
+  </section>
+
+  <script>
+    function showPage(pageId) {
+      const pages = document.querySelectorAll(".page");
+
+      pages.forEach(function (page) {
+        page.classList.remove("active");
+      });
+
+      document.getElementById(pageId).classList.add("active");
+      createHearts(16);
+    }
+
+    function openLetter() {
+      showPage("page2");
+      createHearts(25);
+    }
+
+    function showReasons() {
+      showPage("page3");
+    }
+
+    function showFinal() {
+      showPage("page4");
+      createHearts(40);
+    }
+
+    function restart() {
+      showPage("page1");
+    }
+
+    function createHearts(numberOfHearts) {
+      const heartSymbols = ["❤️", "💕", "💖", "💗", "🌸", "✨"];
+
+      for (let i = 0; i < numberOfHearts; i++) {
+        const heart = document.createElement("div");
+
+        heart.classList.add("floating-heart");
+
+        heart.textContent =
+          heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 25 + 18 + "px";
+        heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(function () {
+          heart.remove();
+        }, 6500);
+      }
+    }
+  </script>
+
+</body>
+</html>
+ 
